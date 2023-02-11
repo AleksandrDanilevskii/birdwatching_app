@@ -14,3 +14,10 @@
 
 ## Чем поможет приложение?
 Приложение позволит как вести учет собственных наблюдений, сохраняя необходимую информацию (название птицы, время и место наблюдений, какую-то дополнительную информацию), так и следить за наблюдениями других пользователей приложения.
+
+## Обо мне
+**Danilevsky Alexander**\
+*Data analyst*\
+*St. Petersburg, Russia*\
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/512px-Telegram_2019_Logo.svg.png" width="15" height="15">
+@a_danilevsky
