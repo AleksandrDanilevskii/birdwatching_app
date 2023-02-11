@@ -1,3 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
+from birds.models import (
+    Bird,
+    Infraclass,
+    Order,
+)
+
+admin.site.register(Bird)
+admin.site.register(Infraclass)
+admin.site.register(Order)
+
