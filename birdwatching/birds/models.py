@@ -1,6 +1,11 @@
 import datetime
 
+# from django.contrib.gis.db.models import PointField
+# from django.contrib.gis.geos import Point
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Infraclass(models.Model):
@@ -31,4 +36,28 @@ class Bird(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
 # Meta =
+class Country(models.Model):
+    name = models.CharField(verbose_name='name', max_length=64, unique=True)
+
+    def __str__(self):
+        return f'{self.name}'
+
+
+class Watch(models.Model):
+    # objects = models.Manager()
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+    is_private = models.BooleanField(verbose_name='is private', default=False)
+    description = models.TextField(verbose_name='description', max_length=500, null=True, blank=True)
+    # location = PointField()
+    longitude = models.DecimalField(max_digits=9, decimal_places=6)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6)
+    country = models.ForeignKey(Country, on_delete=models.PROTECT)
+    watched_at = models.DateTimeField(verbose_name='watched at', null=True, blank=True)
+    created_at = models.DateTimeField(verbose_name='created at', default=datetime.datetime.now())
+    updated_at = models.DateTimeField(verbose_name='updated at', null=True, blank=True)
+
+    def __str__(self):
+        return f'({self.latitude},{self.longitude}) ({self.country})'
