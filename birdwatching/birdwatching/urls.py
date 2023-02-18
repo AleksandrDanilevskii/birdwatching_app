@@ -4,7 +4,7 @@ from django.urls import path
 from birds.views import (
     main_page,
     BirdsListView, BirdsDetailView,
-    WatchListView, WatchDetailView,
+    WatchListView, WatchDetailView, WatchCreateView,
 )
 
 urlpatterns = [
@@ -13,5 +13,6 @@ urlpatterns = [
     path('bird/<int:pk>', BirdsDetailView.as_view(), name='bird'),
     path('events/', WatchListView.as_view(), name='events'),
     path('event/<int:pk>', WatchDetailView.as_view(), name='event'),
+    path('events/create', WatchCreateView.as_view(), name='event_create'),
     path('admin/', admin.site.urls),
 ]
