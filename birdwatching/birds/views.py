@@ -21,6 +21,9 @@ class BirdsDetailView(DetailView):
 class WatchListView(ListView):
     model = Watch
 
+    def get_queryset(self):
+        return Watch.objects.filter(is_private=False)
+
 
 class WatchDetailView(DetailView):
     model = Watch
