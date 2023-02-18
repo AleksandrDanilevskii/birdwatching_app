@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Event {{ object.pk }} details2
+{% endblock %}
+
+
+{% block body %}
+  <div class="card" style="width: 32rem;">
+    <div class="card-body">
+      <div class="h5 card-title">Watch <code>{{ object.pk }}</code> details</div>
+      <p class="card-text">
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Bird</span></th>
+            <td>{{object.bird}}</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Watched at</span></th>
+            <td>{{object.watched_at}}</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Country</span></th>
+            <td>{{object.country}}</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Coordinates</span></th>
+            <td>({{object.longitude}}, {{object.latitude}})</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Description</span></th>
+            <td>{{object.description}}</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Author</span></th>
+            <td>{{object.author}}</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Created at</span></th>
+            <td>{{object.created_at}}</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Is private</span></th>
+            <td>{{object.is_private}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+{% endblock %}

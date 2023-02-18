@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Events list
+{% endblock %}
+
+{% block body %}
+  <div class="h1 mb-2">Events:</div>
+  {% if object_list %}
+
+    <div class="list-group list-group-numbered">
+      {% for event in object_list %}
+        <li class="list-group-item">
+          <a href="{% url 'event' pk=event.pk%}">{{ event }}</a>
+        </li>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <h2> No events yet</h2>
+  {% endif %}
+{% endblock %}

@@ -51,13 +51,13 @@ class Watch(models.Model):
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     is_private = models.BooleanField(verbose_name='is private', default=False)
     description = models.TextField(verbose_name='description', max_length=500, null=True, blank=True)
-    # location = PointField()
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
     country = models.ForeignKey(Country, on_delete=models.PROTECT)
-    watched_at = models.DateTimeField(verbose_name='watched at', null=True, blank=True)
+    watched_at = models.DateTimeField(verbose_name='watched at', default=datetime.datetime.now())
     created_at = models.DateTimeField(verbose_name='created at', default=datetime.datetime.now())
     updated_at = models.DateTimeField(verbose_name='updated at', null=True, blank=True)
+    bird = models.ForeignKey(Bird, on_delete=models.PROTECT)
 
     def __str__(self):
-        return f'({self.latitude},{self.longitude}) ({self.country})'
+        return f'{self.bird} ({self.country}, {self.watched_at})'
