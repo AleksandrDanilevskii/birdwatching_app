@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from birds.models import Bird, Watch
 
@@ -28,4 +28,15 @@ class WatchDetailView(DetailView):
 class WatchCreateView(CreateView):
     model = Watch
     fields = ('bird', 'description', 'longitude', 'latitude', 'country', 'watched_at', 'author', 'is_private')
+    success_url = reverse_lazy('events')
+
+
+class WatchUpdateView(UpdateView):
+    model = Watch
+    fields = ('bird', 'description', 'longitude', 'latitude', 'country', 'watched_at', 'author', 'is_private')
+    success_url = reverse_lazy('events')
+
+
+class WatchDeleteView(DeleteView):
+    model = Watch
     success_url = reverse_lazy('events')
