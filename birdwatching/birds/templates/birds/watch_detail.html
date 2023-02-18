@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Event {{ object.pk }} details2
+Event {{ object.pk }} details
 {% endblock %}
 
 
@@ -50,5 +50,12 @@ Event {{ object.pk }} details2
 
     </div>
   </div>
+
+<span>
+  <a href="{% url 'event_update' pk=object.pk%}" class="btn btn-info"> Edit </a>
+</span>
+<span>
+  <a href="{% url 'event_delete' pk=object.pk%}" class="btn btn-danger"> Delete </a>
+</span>
 
 {% endblock %}
