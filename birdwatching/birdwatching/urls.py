@@ -7,16 +7,21 @@ from birds.views import (
     WatchListView, WatchDetailView, WatchCreateView, WatchUpdateView, WatchDeleteView,
     MyWatchListView,
 )
+from users.views import RegistrationView
 
 urlpatterns = [
     path('', main_page),
+    # birds
     path('birds/', BirdsListView.as_view(), name='birds'),
-    path('bird/<int:pk>', BirdsDetailView.as_view(), name='bird'),
+    path('bird/<int:pk>/', BirdsDetailView.as_view(), name='bird'),
     path('events/my/', MyWatchListView.as_view(), name='my_events'),
     path('events/', WatchListView.as_view(), name='events'),
-    path('event/<int:pk>', WatchDetailView.as_view(), name='event'),
-    path('events/create', WatchCreateView.as_view(), name='event_create'),
-    path('events/update/<int:pk>', WatchUpdateView.as_view(), name='event_update'),
-    path('events/delete/<int:pk>', WatchDeleteView.as_view(), name='event_delete'),
+    path('event/<int:pk>/', WatchDetailView.as_view(), name='event'),
+    path('events/create/', WatchCreateView.as_view(), name='event_create'),
+    path('events/update/<int:pk>/', WatchUpdateView.as_view(), name='event_update'),
+    path('events/delete/<int:pk>/', WatchDeleteView.as_view(), name='event_delete'),
+    # users
+    path('users/create/', RegistrationView.as_view(), name='registration'),
+    # other
     path('admin/', admin.site.urls),
 ]
