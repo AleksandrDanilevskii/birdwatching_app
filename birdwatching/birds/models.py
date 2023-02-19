@@ -11,7 +11,7 @@ User = get_user_model()
 
 class Base(models.Model):
     created_at = models.DateTimeField(verbose_name='created at', default=now)
-    updated_at = models.DateTimeField(verbose_name='updated at', null=True, blank=True)
+    updated_at = models.DateTimeField(verbose_name='updated at', default=now)
 
     class Meta:
         abstract = True
