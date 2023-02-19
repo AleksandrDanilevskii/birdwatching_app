@@ -5,7 +5,9 @@ Events list
 {% endblock %}
 
 {% block body %}
-  <a href="{% url 'event_create' %}" class="btn btn-primary">Create new</a>
+  {% if user %}
+    <a href="{% url 'event_create' %}" class="btn btn-primary">Create new</a>
+  {% endif %}
 
   <div class="h1 mb-2">Events:</div>
   {% if object_list %}
