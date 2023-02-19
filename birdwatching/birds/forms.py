@@ -31,11 +31,7 @@ class WatchModelForm(forms.ModelForm):
     is_private = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={
         'class': 'form-check-input'
     }))
-    updated_at = forms.DateTimeField(required=False, widget=forms.HiddenInput())
 
     class Meta:
         model = Watch
-        fields = (
-            'bird', 'longitude', 'latitude', 'country', 'watched_at', 'description', 'author', 'is_private',
-            'updated_at'
-        )
+        fields = ('bird', 'longitude', 'latitude', 'country', 'watched_at', 'description', 'author', 'is_private')
