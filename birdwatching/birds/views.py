@@ -25,6 +25,13 @@ class WatchListView(ListView):
         return Watch.objects.filter(is_private=False)
 
 
+class MyWatchListView(ListView):
+    model = Watch
+
+    def get_queryset(self):
+        return Watch.objects.filter(author=self.request.user)
+
+
 class WatchDetailView(DetailView):
     model = Watch
 

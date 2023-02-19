@@ -5,12 +5,14 @@ from birds.views import (
     main_page,
     BirdsListView, BirdsDetailView,
     WatchListView, WatchDetailView, WatchCreateView, WatchUpdateView, WatchDeleteView,
+    MyWatchListView,
 )
 
 urlpatterns = [
     path('', main_page),
     path('birds/', BirdsListView.as_view(), name='birds'),
     path('bird/<int:pk>', BirdsDetailView.as_view(), name='bird'),
+    path('events/my/', MyWatchListView.as_view(), name='my_events'),
     path('events/', WatchListView.as_view(), name='events'),
     path('event/<int:pk>', WatchDetailView.as_view(), name='event'),
     path('events/create', WatchCreateView.as_view(), name='event_create'),
