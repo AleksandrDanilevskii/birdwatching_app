@@ -40,20 +40,33 @@
                     </a>
                 </li>
 
-                {% if user %}
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="{% url 'my_events' %}">
-                        My events
-                    </a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'my_events' %}">
+                            My events
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'logout' %}">
+                            Logout
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'registration' %}">
+                            Create new account
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'login' %}">
+                            Login
+                        </a>
+                    </li>
                 {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="{% url 'registration' %}">
-                        Create new account
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
