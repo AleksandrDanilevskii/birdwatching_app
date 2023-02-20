@@ -40,4 +40,11 @@ User {{ object.name }} details
     </div>
   </div>
 
+<span>
+  <a href="{% url 'user_update' pk=object.pk%}" class="btn btn-info"> Edit </a>
+</span>
+<span>
+  <a href="{% url 'change_password' pk=object.pk%}" class="btn btn-info"> Change password </a>
+</span>
+
 {% endblock %}

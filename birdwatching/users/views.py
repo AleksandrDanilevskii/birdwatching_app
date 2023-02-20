@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import CreateView, TemplateView, DetailView, UpdateView
 
-from users.forms import RegistrationForm, LoginForm
+from users.forms import RegistrationForm, LoginForm, UserModelForm
 
 
 class RegistrationView(CreateView):
@@ -20,6 +20,21 @@ class UserLoginView(LoginView):
 
 class UserLogoutView(LogoutView):
     pass
+
+
+class UserDetailView(DetailView):
+    model = User
+    template_name = 'users/user_detail.html'
+
+
+class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = User
+    template_name = 'users/user_edit_form.html'
+    form_class = UserModelForm
+    success_url = '/users/my-account/'
+
+    def test_func(self):
+        return self.get_object() == self.request.user
 
 
 class UserTemplateView(LoginRequiredMixin, TemplateView):
