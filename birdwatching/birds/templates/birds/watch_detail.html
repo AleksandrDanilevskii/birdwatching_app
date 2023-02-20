@@ -15,7 +15,7 @@ Event {{ object.pk }} details
         <tbody>
           <tr>
             <th scope="row"><span class="badge bg-secondary">Bird</span></th>
-            <td>{{object.bird}}</td>
+            <td><a href="{% url 'bird' pk=object.bird.pk %}">{{object.bird}}</a></td>
           </tr>
           <tr>
             <th scope="row"><span class="badge bg-secondary">Watched at</span></th>
@@ -35,7 +35,7 @@ Event {{ object.pk }} details
           </tr>
           <tr>
             <th scope="row"><span class="badge bg-secondary">Author</span></th>
-            <td>{{object.author}}</td>
+            <td><a href="{% url 'account' pk=object.author.pk %}">{{object.author}}</a></td>
           </tr>
           <tr>
             <th scope="row"><span class="badge bg-secondary">Created at</span></th>
