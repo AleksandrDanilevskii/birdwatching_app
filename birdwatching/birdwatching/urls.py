@@ -7,7 +7,7 @@ from birds.views import (
     WatchListView, WatchDetailView, WatchCreateView, WatchUpdateView, WatchDeleteView,
     MyWatchListView,
 )
-from users.views import RegistrationView, UserLoginView, UserLogoutView
+from users.views import RegistrationView, UserLoginView, UserLogoutView, UserTemplateView
 
 urlpatterns = [
     path('', main_page),
@@ -24,6 +24,8 @@ urlpatterns = [
     path('users/create/', RegistrationView.as_view(), name='registration'),
     path('users/login/', UserLoginView.as_view(), name='login'),
     path('users/logout/', UserLogoutView.as_view(), name='logout'),
+    path('users/my-account/', UserTemplateView.as_view(), name='my_account'),
+
     # other
     path('admin/', admin.site.urls),
 ]

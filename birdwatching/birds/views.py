@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -25,7 +26,7 @@ class WatchListView(ListView):
         return Watch.objects.filter(is_private=False)
 
 
-class MyWatchListView(ListView):
+class MyWatchListView(LoginRequiredMixin, ListView):
     model = Watch
 
     def get_queryset(self):
@@ -36,20 +37,24 @@ class WatchDetailView(DetailView):
     model = Watch
 
 
-class WatchCreateView(CreateView):
+class WatchCreateView(LoginRequiredMixin, CreateView):
     model = Watch
-    # fields = ('bird', 'description', 'longitude', 'latitude', 'country', 'watched_at', 'author', 'is_private')
     form_class = WatchModelForm
     success_url = reverse_lazy('events')
 
 
-class WatchUpdateView(UpdateView):
+class WatchUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Watch
-    # fields = ('bird', 'description', 'longitude', 'latitude', 'country', 'watched_at', 'author', 'is_private')
     form_class = WatchModelForm
     success_url = reverse_lazy('events')
 
+    def test_func(self):
+        return self.get_object().author == self.request.user
 
-class WatchDeleteView(DeleteView):
+
+class WatchDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Watch
     success_url = reverse_lazy('events')
+
+    def test_func(self):
+        return self.get_object().author == self.request.user
