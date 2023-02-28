@@ -22,6 +22,7 @@ class RegistrationForm(UserCreationForm):
         'class': 'form-control'
     }))
     password1 = forms.CharField(
+        label='Password',
         help_text=mark_safe(
             '''
             <ul>
@@ -36,6 +37,7 @@ class RegistrationForm(UserCreationForm):
         })
     )
     password2 = forms.CharField(
+        label='Password',
         help_text='Enter the same password as before, for verification.',
         widget=forms.PasswordInput(attrs={
             'class': 'form-control'
