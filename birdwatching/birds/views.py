@@ -42,6 +42,10 @@ class WatchCreateView(LoginRequiredMixin, CreateView):
     form_class = WatchModelForm
     success_url = reverse_lazy('events')
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 
 class WatchUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Watch
