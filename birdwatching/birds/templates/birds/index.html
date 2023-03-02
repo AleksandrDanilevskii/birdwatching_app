@@ -5,7 +5,7 @@ Birdwatching info
 {% endblock %}
 
 {% block body %}
-<h1>Hello, {{user.username|default:"Anonymous"}}! It's app for birdwatching</h1>
+<h1>Hello, {{user.first_name|default:"Anonymous"}}! It's app for birdwatching</h1>
 <img src="https://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/newseventsimage_1645625619609_mainnews2012_x1.webp">
 
 <h2> What is birdwatching? </h2>
@@ -20,6 +20,4 @@ Birdwatching, or birding, is the observing of birds, either as a recreational ac
     <li> Learn about the latest interesting observations </li>
 </ul>
 
-<img src="https://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/newseventsimage_1645625619609_mainnews2012_x1.webp">
-<img src="https://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/newseventsimage_1645625619609_mainnews2012_x1.webp">
 {% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Birds list
+{% endblock %}
+
+{% block body %}
+  <div class="h1 mb-2">Birds:</div>
+  {% if object_list %}
+
+    <div class="list-group list-group-numbered">
+      {% for bird in object_list %}
+        <li class="list-group-item">
+          <a href="{% url 'bird' pk=bird.pk%}">{{ bird.name }} ({{ bird.name_latin }})</a>
+        </li>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <h2> No birds yet</h2>
+  {% endif %}
+{% endblock %}

@@ -29,28 +29,58 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="/">
+                       href="{% url 'birds' %}">
                         Birds
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="/">
-                        Location
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="/">
-                        Users
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="/">
+                       href="{% url 'events' %}">
                         Events
                     </a>
                 </li>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'my_events' %}">
+                            My events
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'my_account' %}">
+                            Account
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'logout' %}">
+                            Logout
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'registration' %}">
+                            Create new account
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'login' %}">
+                            Login
+                        </a>
+                    </li>
+                {% endif %}
+                {% if user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/admin/">
+                            Admin
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -58,7 +88,7 @@
 
 <div class="container">
     {% block body %}
--md text-left"
+
     {% endblock %}
 </div>
 

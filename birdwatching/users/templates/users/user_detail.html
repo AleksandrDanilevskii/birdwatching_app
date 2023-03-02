@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+User {{ object.name }} details
+{% endblock %}
+
+{% block body %}
+  <div class="card" style="width: 32rem;">
+    <div class="card-body">
+      <div class="h5 card-title">User <code>{{ object.username }}</code> details</div>
+      <p class="card-text">
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">First name</span></th>
+            <td>{{object.first_name}}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Last name</span></th>
+            <td>{{object.last_name}}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Email</span></th>
+            <td>{{object.email}}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Date joined</span></th>
+            <td>{{object.date_joined}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+<span>
+  <a href="{% url 'user_update' pk=object.pk%}" class="btn btn-info"> Edit </a>
+</span>
+<span>
+  <a href="{% url 'change_password' pk=object.pk%}" class="btn btn-info"> Change password </a>
+</span>
+
+{% endblock %}
