@@ -8,10 +8,13 @@ Birds list
   <div class="h1 mb-2">Birds:</div>
   {% if object_list %}
 
-    <div class="list-group list-group-numbered">
+    <div class="list-group">
       {% for bird in object_list %}
-        <li class="list-group-item">
-          <a href="{% url 'bird' pk=bird.pk%}">{{ bird.name }} ({{ bird.name_latin }})</a>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div class="fw-bold"><a href="{% url 'event' pk=bird.pk%}">{{ bird.name }}</a></div>
+            {{ bird.name_latin }}
+          </div>
         </li>
       {% endfor %}
     </div>

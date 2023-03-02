@@ -12,13 +12,18 @@ Events list
   <div class="h1 mb-2">Events:</div>
   {% if object_list %}
 
-    <div class="list-group list-group-numbered">
+    <div class="list-group">
       {% for event in object_list %}
-        <li class="list-group-item">
-          <a href="{% url 'event' pk=event.pk%}">{{ event }}</a>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+          <div class="fw-bold">{{event.bird}}</div>
+            <a href="{% url 'event' pk=event.pk%}">{{ event.watched_at }}, {{ event.country }}</a>
+          </div>
+          <span class="badge bg-primary rounded-pill">{{ event.author }}</span>
         </li>
       {% endfor %}
     </div>
+
 
   {% else %}
     <h2> No events yet</h2>
