@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth.models import User
 
 from birds.models import Watch, Bird, Country
 
@@ -23,15 +22,10 @@ class WatchModelForm(forms.ModelForm):
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={
         'class': 'form-control'
     }))
-    author = forms.ModelChoiceField(
-        queryset=User.objects.filter(username='adanilevsky'),
-        initial=User.objects.filter(username='adanilevsky'),
-        # widget=forms.HiddenInput()
-    )
     is_private = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={
         'class': 'form-check-input'
     }))
 
     class Meta:
         model = Watch
-        fields = ('bird', 'longitude', 'latitude', 'country', 'watched_at', 'description', 'author', 'is_private')
+        fields = ('bird', 'longitude', 'latitude', 'country', 'watched_at', 'description', 'is_private')
